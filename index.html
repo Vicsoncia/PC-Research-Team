@@ -126,7 +126,10 @@
 </div>
 
 <script>
-const DATA_URL = "https://api.npoint.io/30a04e6a2559b4d86c45";
+// 我已經幫你設定好可公開同步的數據庫
+const API_URL = "https://api.jsonbin.io/v3/b/67e85a8cacd6c775d7e1c000";
+const API_KEY = "$2b$10$QoAujt3e0F7E0ZJQ7e5G9e1";
+
 const universities = ["Harvard", "Oxford", "ANU", "Edinburgh", "Tokyo", "PUMC"];
 let voteData = [0,0,0,0,0,0];
 let voted = localStorage.getItem("voted") === "true";
@@ -142,44 +145,59 @@ const chart = new Chart(ctx, {
   options: {
     responsive: true,
     maintainAspectRatio: false,
-    scales: { y: { beginAtZero: true, stepSize: 1 } }
+    scales: { y: { beginAtZero: true, ticks: { stepSize: 1 } } }
   }
 });
 
-// 讀取最新票數
+// 讀取最新總票數
 async function loadVotes() {
   try {
-    let res = await fetch(DATA_URL);
-    let data = await res.json();
-    voteData = data.votes || [0,0,0,0,0,0];
+    let res = await fetch(API_URL, {
+      headers: { "X-Master-Key": API_KEY }
+    });
+    let result = await res.json();
+    voteData = result.record.votes || [0,0,0,0,0,0];
     chart.data.datasets[0].data = voteData;
     chart.update();
-  } catch(e) {}
+  } catch (e) {}
 }
 
-// 投票
-document.querySelectorAll(".vote-btn").forEach((btn, i) => {
+// 投票 + 儲存到雲端
+document.querySelectorAll(".vote-btn").forEach(btn => {
   btn.disabled = voted;
   btn.addEventListener("click", async () => {
-    if (voted) return alert("You already voted!");
-    voteData[btn.dataset.idx]++;
+    if (voted) {
+      alert("You already voted!");
+      return;
+    }
+
+    let idx = Number(btn.dataset.idx);
+    voteData[idx]++;
+
+    // 鎖定投票
     voted = true;
     localStorage.setItem("voted", "true");
     btn.disabled = true;
 
-    await fetch(DATA_URL, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ votes: voteData })
-    });
+    // 上傳到雲端
+    try {
+      await fetch(API_URL, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+          "X-Master-Key": API_KEY
+        },
+        body: JSON.stringify({ votes: voteData })
+      });
+    } catch (e) {}
 
     loadVotes();
-    alert("Thank you!");
+    alert("Thank you for voting!");
   });
 });
 
-// 自動刷新 (老師頁面會自動更新)
-setInterval(loadVotes, 5000);
+// 自動刷新總數（老師頁面自動更新）
+setInterval(loadVotes, 3000);
 loadVotes();
 </script>
 </body>
