@@ -257,7 +257,6 @@
 <script>
     const labels = ['Harvard', 'Oxford', 'ANU', 'Edinburgh', 'Tokyo', 'PUMC'];
     let votes = [0, 0, 0, 0, 0, 0];
-    let hasVoted = localStorage.getItem("hasVoted") === "true";
 
     const ctx = document.getElementById('voteChart').getContext('2d');
     const chart = new Chart(ctx, {
@@ -265,7 +264,7 @@
         data: {
             labels: labels,
             datasets: [{
-                label: 'Total Votes',
+                label: 'Votes',
                 data: votes,
                 backgroundColor: '#3182ce',
                 borderWidth: 1,
@@ -282,36 +281,14 @@
         }
     });
 
-    function updateChart() {
-        chart.data.datasets[0].data = votes;
-        chart.update();
-    }
-
-    function updateButtons() {
-        document.querySelectorAll(".vote-btn").forEach(btn => {
-            btn.disabled = hasVoted;
-            if (hasVoted) btn.textContent = "Voted";
-        });
-    }
-
-    document.querySelectorAll(".vote-btn").forEach(btn => {
-        btn.addEventListener("click", function () {
-            if (hasVoted) {
-                alert("You already voted!");
-                return;
-            }
-            let i = parseInt(this.dataset.uni);
+    document.querySelectorAll('.vote-btn').forEach(btn => {
+        btn.addEventListener('click', function(){
+            const i = parseInt(this.dataset.uni);
             votes[i]++;
-            hasVoted = true;
-            localStorage.setItem("hasVoted", "true");
-            updateButtons();
-            updateChart();
-            alert("Thank you for voting!");
+            chart.update();
+            alert('Thank you for voting!');
         });
     });
-
-    updateChart();
-    updateButtons();
 </script>
 </body>
 </html>
