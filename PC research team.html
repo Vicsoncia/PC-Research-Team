@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brief Introduction to Universities</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #f0f8fb 0%, #e8f4f8 100%);
+            padding: 20px;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .title {
+            text-align: center;
+            font-size: 28px;
+            font-weight: 600;
+            color: #2d3748;
+            margin: 20px 0 40px;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.05);
+        }
+
+        .uni-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+            gap: 24px;
+            margin-bottom: 40px;
+        }
+
+        .uni-card {
+            background: white;
+            border-radius: 12px;
+            padding: 22px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            transition: transform 0.2s ease;
+        }
+
+        .uni-card:hover {
+            transform: translateY(-4px);
+        }
+
+        .uni-card h2 {
+            font-size: 20px;
+            color: #2b6cb0;
+            margin-bottom: 12px;
+            border-bottom: 2px solid #e8f4f8;
+            padding-bottom: 8px;
+        }
+
+        .uni-img {
+            width: 100%;
+            height: 160px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin: 10px 0 14px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+        }
+
+        .uni-card p {
+            font-size: 15px;
+            color: #4a5568;
+            line-height: 1.5;
+            margin-bottom: 6px;
+        }
+
+        .uni-card strong {
+            color: #2d3748;
+        }
+
+        .admission {
+            margin-top: 12px;
+            padding-top: 12px;
+            border-top: 1px solid #e2e8f0;
+        }
+
+        .vote-section {
+            background: white;
+            border-radius: 12px;
+            padding: 22px;
+            margin-top: 20px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+        }
+
+        .vote-section h2 {
+            font-size: 16px;
+            color: #2d3748;
+            margin-bottom: 16px;
+            text-align: center;
+            line-height: 1.4;
+        }
+
+        .vote-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .vote-btn {
+            padding: 8px 12px;
+            font-size: 14px;
+            background-color: #3182ce;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+        }
+
+        .vote-btn:hover {
+            background-color: #2b6cb0;
+        }
+        .vote-btn:disabled {
+            background-color: #ccc;
+            cursor: not-allowed;
+        }
+
+        .chart-box {
+            width: 100%;
+            height: 240px;
+            margin-top: 10px;
+        }
+
+        @media (max-width: 768px) {
+            .uni-grid {
+                grid-template-columns: 1fr;
+            }
+            .vote-section h2 {
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+<div class="container">
+    <h1 class="title">Brief Introduction to the Universities</h1>
+
+    <div class="uni-grid">
+        <!-- USA -->
+        <div class="uni-card">
+            <h2>Harvard University</h2>
+            <img class="uni-img" src="https://picsum.photos/id/10/800/400" alt="USA landscape">
+            <p><strong>Country:</strong> The United States of America</p>
+            <p><strong>School Strengths:</strong> Biomedical Science, Gene Editing, Clinical Psychology</p>
+            <div class="admission">
+                <p><strong>Admission Requirements:</strong></p>
+                <p>IELTS 7.0–8.0</p>
+                <p>IB 38–42 points</p>
+                <p>A-level A*A*A</p>
+                <p>High School Score 90%–100%</p>
+            </div>
+        </div>
+
+        <!-- UK Oxford -->
+        <div class="uni-card">
+            <h2>University of Oxford</h2>
+            <img class="uni-img" src="https://picsum.photos/id/15/800/400" alt="UK landscape">
+            <p><strong>Country:</strong> The United Kingdom</p>
+            <p><strong>School Strengths:</strong> Medicine, Anatomy, Psychology</p>
+            <div class="admission">
+                <p><strong>Admission Requirements:</strong></p>
+                <p>IELTS 7.0–8.0</p>
+                <p>A-level A*A*A</p>
+                <p>High School Score 85%–100%</p>
+            </div>
+        </div>
+
+        <!-- Australia -->
+        <div class="uni-card">
+            <h2>Australian National University</h2>
+            <img class="uni-img" src="https://picsum.photos/id/29/800/400" alt="Australia landscape">
+            <p><strong>Country:</strong> Australia</p>
+            <p><strong>School Strengths:</strong> Life science, Basic medicine</p>
+            <div class="admission">
+                <p><strong>Admission Requirements:</strong></p>
+                <p>IELTS 6.5–7.0</p>
+                <p>IB 34–38 points</p>
+                <p>A-level AAA</p>
+                <p>High School Score 75%–100%</p>
+            </div>
+        </div>
+
+        <!-- UK Edinburgh -->
+        <div class="uni-card">
+            <h2>University of Edinburgh</h2>
+            <img class="uni-img" src="https://picsum.photos/id/25/800/400" alt="UK landscape">
+            <p><strong>Country:</strong> The United Kingdom</p>
+            <p><strong>School Strengths:</strong> Medical Device Engineering, Psychology</p>
+            <div class="admission">
+                <p><strong>Admission Requirements:</strong></p>
+                <p>IELTS 6.5–7.0</p>
+                <p>A-level A*A*A</p>
+                <p>High School Score ≥70% (Physics + Chemistry required)</p>
+            </div>
+        </div>
+
+        <!-- Japan -->
+        <div class="uni-card">
+            <h2>The University of Tokyo</h2>
+            <img class="uni-img" src="https://picsum.photos/id/155/800/400" alt="Japan mountain landscape">
+            <p><strong>Country:</strong> Japan</p>
+            <p><strong>School Strengths:</strong> Plastic Surgery, Aesthetic Surgery</p>
+            <div class="admission">
+                <p><strong>Admission Requirements:</strong></p>
+                <p>Japanese N1 (≥140) or N2 (≥160)</p>
+                <p>No mandatory IELTS/IB/A-level</p>
+                <p>High School Score 80%–100%</p>
+            </div>
+        </div>
+
+        <!-- China -->
+        <div class="uni-card">
+            <h2>Peking Union Medical College</h2>
+            <img class="uni-img" src="https://picsum.photos/id/18/800/400" alt="China landscape">
+            <p><strong>Country:</strong> China</p>
+            <p><strong>School Strengths:</strong> Biology, Plastic & Aesthetic Surgery, Clinical Medicine</p>
+            <div class="admission">
+                <p><strong>Admission Requirements:</strong></p>
+                <p>No mandatory IELTS/IB/A-level</p>
+                <p>High School Score ≥80%</p>
+                <p>Gaokao 590–650 points</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="vote-section">
+        <h2>To create a female companion for the monster, you would need to master specialized knowledge and skills. Which university would suit you better?</h2>
+        <div class="vote-buttons">
+            <button class="vote-btn" data-uni="0">Harvard</button>
+            <button class="vote-btn" data-uni="1">Oxford</button>
+            <button class="vote-btn" data-uni="2">ANU</button>
+            <button class="vote-btn" data-uni="3">Edinburgh</button>
+            <button class="vote-btn" data-uni="4">Tokyo</button>
+            <button class="vote-btn" data-uni="5">PUMC</button>
+        </div>
+        <div class="chart-box">
+            <canvas id="voteChart"></canvas>
+        </div>
+    </div>
+</div>
+
+<script>
+    const API_URL = "https://api.npoint.io/ce190267727277777777";
+    const labels = ['Harvard', 'Oxford', 'ANU', 'Edinburgh', 'Tokyo', 'PUMC'];
+    let votes = [0,0,0,0,0,0];
+    let hasVoted = localStorage.getItem("hasVoted") === "true";
+
+    // 图表初始化
+    const ctx = document.getElementById('voteChart').getContext('2d');
+    const chart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: labels,
+            datasets: [{
+                label: 'Total Votes',
+                data: votes,
+                backgroundColor: '#3182ce',
+                borderWidth: 1,
+                borderRadius: 4
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            scales: { y: { beginAtZero: true, ticks: { stepSize:1 } }, x: { grid: { display:false } } }
+        }
+    });
+
+    // 加载票数
+    async function loadVotes() {
+        try {
+            let res = await fetch(API_URL);
+            let data = await res.json();
+            votes = data.votes || [0,0,0,0,0,0];
+            chart.data.datasets[0].data = votes;
+            chart.update();
+        } catch(e) {}
+    }
+
+    // 保存票数
+    async function saveVotes() {
+        try {
+            await fetch(API_URL, {
+                method: "POST",
+                headers: { "Content-Type":"application/json" },
+                body: JSON.stringify({ votes })
+            });
+        } catch(e) {}
+    }
+
+    // 按钮控制
+    function updateButtons() {
+        document.querySelectorAll(".vote-btn").forEach(btn => {
+            btn.disabled = hasVoted;
+        });
+    }
+
+    // 点击投票
+    document.querySelectorAll(".vote-btn").forEach(btn => {
+        btn.addEventListener("click", async function(){
+            if (hasVoted) { alert("You already voted!"); return; }
+            let i = parseInt(this.dataset.uni);
+            votes[i]++;
+            hasVoted = true;
+            localStorage.setItem("hasVoted", "true");
+            updateButtons();
+            await saveVotes();
+            loadVotes();
+            alert("Thank you for voting!");
+        });
+    });
+
+    // 启动
+    loadVotes();
+    updateButtons();
+</script>
+</body>
+</html>
