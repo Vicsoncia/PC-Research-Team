@@ -255,12 +255,10 @@
 </div>
 
 <script>
-    const API_URL = "https://api.npoint.io/ce190267727277777777";
     const labels = ['Harvard', 'Oxford', 'ANU', 'Edinburgh', 'Tokyo', 'PUMC'];
-    let votes = [0,0,0,0,0,0];
+    let votes = [0, 0, 0, 0, 0, 0];
     let hasVoted = localStorage.getItem("hasVoted") === "true";
 
-    // 图表初始化
     const ctx = document.getElementById('voteChart').getContext('2d');
     const chart = new Chart(ctx, {
         type: 'bar',
@@ -277,56 +275,42 @@
         options: {
             responsive: true,
             maintainAspectRatio: false,
-            scales: { y: { beginAtZero: true, ticks: { stepSize:1 } }, x: { grid: { display:false } } }
+            scales: {
+                y: { beginAtZero: true, ticks: { stepSize: 1 } },
+                x: { grid: { display: false } }
+            }
         }
     });
 
-    // 加载票数
-    async function loadVotes() {
-        try {
-            let res = await fetch(API_URL);
-            let data = await res.json();
-            votes = data.votes || [0,0,0,0,0,0];
-            chart.data.datasets[0].data = votes;
-            chart.update();
-        } catch(e) {}
+    function updateChart() {
+        chart.data.datasets[0].data = votes;
+        chart.update();
     }
 
-    // 保存票数
-    async function saveVotes() {
-        try {
-            await fetch(API_URL, {
-                method: "POST",
-                headers: { "Content-Type":"application/json" },
-                body: JSON.stringify({ votes })
-            });
-        } catch(e) {}
-    }
-
-    // 按钮控制
     function updateButtons() {
         document.querySelectorAll(".vote-btn").forEach(btn => {
             btn.disabled = hasVoted;
+            if (hasVoted) btn.textContent = "Voted";
         });
     }
 
-    // 点击投票
     document.querySelectorAll(".vote-btn").forEach(btn => {
-        btn.addEventListener("click", async function(){
-            if (hasVoted) { alert("You already voted!"); return; }
+        btn.addEventListener("click", function () {
+            if (hasVoted) {
+                alert("You already voted!");
+                return;
+            }
             let i = parseInt(this.dataset.uni);
             votes[i]++;
             hasVoted = true;
             localStorage.setItem("hasVoted", "true");
             updateButtons();
-            await saveVotes();
-            loadVotes();
+            updateChart();
             alert("Thank you for voting!");
         });
     });
 
-    // 启动
-    loadVotes();
+    updateChart();
     updateButtons();
 </script>
 </body>
