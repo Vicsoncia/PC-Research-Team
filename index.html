@@ -12,137 +12,30 @@
             box-sizing: border-box;
             font-family: 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
         }
-
         body {
             background: linear-gradient(135deg, #f0f8fb 0%, #e8f4f8 100%);
             padding: 20px;
             min-height: 100vh;
         }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .title {
-            text-align: center;
-            font-size: 28px;
-            font-weight: 600;
-            color: #2d3748;
-            margin: 20px 0 40px;
-            text-shadow: 1px 1px 2px rgba(0,0,0,0.05);
-        }
-
+        .container { max-width: 1200px; margin: 0 auto; }
+        .title { text-align: center; font-size: 28px; color: #2d3748; margin: 20px 0 40px; }
         .uni-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
-            gap: 24px;
-            margin-bottom: 40px;
+            gap: 24px; margin-bottom: 40px;
         }
-
         .uni-card {
-            background: white;
-            border-radius: 12px;
-            padding: 22px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-            transition: transform 0.2s ease;
-        }
-
-        .uni-card:hover {
-            transform: translateY(-4px);
-        }
-
-        .uni-card h2 {
-            font-size: 20px;
-            color: #2b6cb0;
-            margin-bottom: 12px;
-            border-bottom: 2px solid #e8f4f8;
-            padding-bottom: 8px;
-        }
-
-        .uni-img {
-            width: 100%;
-            height: 160px;
-            object-fit: cover;
-            border-radius: 8px;
-            margin: 10px 0 14px;
-            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-        }
-
-        .uni-card p {
-            font-size: 15px;
-            color: #4a5568;
-            line-height: 1.5;
-            margin-bottom: 6px;
-        }
-
-        .uni-card strong {
-            color: #2d3748;
-        }
-
-        .admission {
-            margin-top: 12px;
-            padding-top: 12px;
-            border-top: 1px solid #e2e8f0;
-        }
-
-        .vote-section {
-            background: white;
-            border-radius: 12px;
-            padding: 22px;
-            margin-top: 20px;
+            background: white; border-radius: 12px; padding: 22px;
             box-shadow: 0 4px 12px rgba(0,0,0,0.08);
         }
-
-        .vote-section h2 {
-            font-size: 16px;
-            color: #2d3748;
-            margin-bottom: 16px;
-            text-align: center;
-            line-height: 1.4;
-        }
-
-        .vote-buttons {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-            justify-content: center;
-            margin-bottom: 20px;
-        }
-
-        .vote-btn {
-            padding: 8px 12px;
-            font-size: 14px;
-            background-color: #3182ce;
-            color: white;
-            border: none;
-            border-radius: 6px;
-            cursor: pointer;
-            transition: background-color 0.2s ease;
-        }
-
-        .vote-btn:hover {
-            background-color: #2b6cb0;
-        }
-        .vote-btn:disabled {
-            background-color: #ccc;
-            cursor: not-allowed;
-        }
-
-        .chart-box {
-            width: 100%;
-            height: 240px;
-            margin-top: 10px;
-        }
-
-        @media (max-width: 768px) {
-            .uni-grid {
-                grid-template-columns: 1fr;
-            }
-            .vote-section h2 {
-                font-size: 14px;
-            }
-        }
+        .uni-card h2 { font-size: 20px; color: #2b6cb0; margin-bottom: 12px; padding-bottom: 8px; border-bottom: 2px solid #e8f4f8; }
+        .uni-img { width: 100%; height: 160px; object-fit: cover; border-radius: 8px; margin: 10px 0; }
+        .admission { margin-top: 12px; padding-top: 12px; border-top: 1px solid #e2e8f0; }
+        .vote-section { background: white; border-radius: 12px; padding: 22px; margin-top: 20px; }
+        .vote-buttons { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; margin: 20px 0; }
+        .vote-btn { padding: 8px 14px; background: #3182ce; color: white; border: none; border-radius: 6px; cursor: pointer; }
+        .vote-btn:disabled { background: #ccc; }
+        .chart-box { width: 100%; height: 280px; }
     </style>
 </head>
 
@@ -154,141 +47,140 @@
         <!-- USA -->
         <div class="uni-card">
             <h2>Harvard University</h2>
-            <img class="uni-img" src="https://picsum.photos/id/10/800/400" alt="USA landscape">
-            <p><strong>Country:</strong> The United States of America</p>
-            <p><strong>School Strengths:</strong> Biomedical Science, Gene Editing, Clinical Psychology</p>
+            <img class="uni-img" src="https://picsum.photos/id/10/800/400">
+            <p><strong>Country:</strong> USA</p>
+            <p><strong>Strengths:</strong> Biomedical Science, Gene Editing, Clinical Psychology</p>
             <div class="admission">
-                <p><strong>Admission Requirements:</strong></p>
-                <p>IELTS 7.0–8.0</p>
-                <p>IB 38–42 points</p>
-                <p>A-level A*A*A</p>
-                <p>High School Score 90%–100%</p>
+                <p>IELTS 7.0–8.0 | IB 38–42 | A-level A*A*A | High School 90%+</p>
             </div>
         </div>
 
         <!-- UK Oxford -->
         <div class="uni-card">
             <h2>University of Oxford</h2>
-            <img class="uni-img" src="https://picsum.photos/id/15/800/400" alt="UK landscape">
-            <p><strong>Country:</strong> The United Kingdom</p>
-            <p><strong>School Strengths:</strong> Medicine, Anatomy, Psychology</p>
+            <img class="uni-img" src="https://picsum.photos/id/15/800/400">
+            <p><strong>Country:</strong> United Kingdom</p>
+            <p><strong>Strengths:</strong> Medicine, Anatomy, Psychology</p>
             <div class="admission">
-                <p><strong>Admission Requirements:</strong></p>
-                <p>IELTS 7.0–8.0</p>
-                <p>A-level A*A*A</p>
-                <p>High School Score 85%–100%</p>
+                <p>IELTS 7.0–8.0 | A-level A*A*A | High School 85%+</p>
             </div>
         </div>
 
         <!-- Australia -->
         <div class="uni-card">
             <h2>Australian National University</h2>
-            <img class="uni-img" src="https://picsum.photos/id/29/800/400" alt="Australia landscape">
+            <img class="uni-img" src="https://picsum.photos/id/29/800/400">
             <p><strong>Country:</strong> Australia</p>
-            <p><strong>School Strengths:</strong> Life science, Basic medicine</p>
+            <p><strong>Strengths:</strong> Life science, Basic medicine</p>
             <div class="admission">
-                <p><strong>Admission Requirements:</strong></p>
-                <p>IELTS 6.5–7.0</p>
-                <p>IB 34–38 points</p>
-                <p>A-level AAA</p>
-                <p>High School Score 75%–100%</p>
+                <p>IELTS 6.5–7.0 | IB 34–38 | A-level AAA | High School 75%+</p>
             </div>
         </div>
 
         <!-- UK Edinburgh -->
         <div class="uni-card">
             <h2>University of Edinburgh</h2>
-            <img class="uni-img" src="https://picsum.photos/id/25/800/400" alt="UK landscape">
-            <p><strong>Country:</strong> The United Kingdom</p>
-            <p><strong>School Strengths:</strong> Medical Device Engineering, Psychology</p>
+            <img class="uni-img" src="https://picsum.photos/id/25/800/400">
+            <p><strong>Country:</strong> United Kingdom</p>
+            <p><strong>Strengths:</strong> Medical Device Engineering, Psychology</p>
             <div class="admission">
-                <p><strong>Admission Requirements:</strong></p>
-                <p>IELTS 6.5–7.0</p>
-                <p>A-level A*A*A</p>
-                <p>High School Score ≥70% (Physics + Chemistry required)</p>
+                <p>IELTS 6.5–7.0 | A-level A*A*A | High School ≥70%</p>
             </div>
         </div>
 
         <!-- Japan -->
         <div class="uni-card">
             <h2>The University of Tokyo</h2>
-            <img class="uni-img" src="https://picsum.photos/id/155/800/400" alt="Japan mountain landscape">
+            <img class="uni-img" src="https://picsum.photos/id/155/800/400">
             <p><strong>Country:</strong> Japan</p>
-            <p><strong>School Strengths:</strong> Plastic Surgery, Aesthetic Surgery</p>
+            <p><strong>Strengths:</strong> Plastic Surgery, Aesthetic Surgery</p>
             <div class="admission">
-                <p><strong>Admission Requirements:</strong></p>
-                <p>Japanese N1 (≥140) or N2 (≥160)</p>
-                <p>No mandatory IELTS/IB/A-level</p>
-                <p>High School Score 80%–100%</p>
+                <p>Japanese N1/N2 | High School 80%+</p>
             </div>
         </div>
 
         <!-- China -->
         <div class="uni-card">
             <h2>Peking Union Medical College</h2>
-            <img class="uni-img" src="https://picsum.photos/id/18/800/400" alt="China landscape">
+            <img class="uni-img" src="https://picsum.photos/id/18/800/400">
             <p><strong>Country:</strong> China</p>
-            <p><strong>School Strengths:</strong> Biology, Plastic & Aesthetic Surgery, Clinical Medicine</p>
+            <p><strong>Strengths:</strong> Biology, Plastic Surgery, Clinical Medicine</p>
             <div class="admission">
-                <p><strong>Admission Requirements:</strong></p>
-                <p>No mandatory IELTS/IB/A-level</p>
-                <p>High School Score ≥80%</p>
-                <p>Gaokao 590–650 points</p>
+                <p>High School ≥80% | Gaokao 590–650</p>
             </div>
         </div>
     </div>
 
     <div class="vote-section">
-        <h2>To create a female companion for the monster, you would need to master specialized knowledge and skills. Which university would suit you better?</h2>
+        <h2>Which university would suit you better?</h2>
         <div class="vote-buttons">
-            <button class="vote-btn" data-uni="0">Harvard</button>
-            <button class="vote-btn" data-uni="1">Oxford</button>
-            <button class="vote-btn" data-uni="2">ANU</button>
-            <button class="vote-btn" data-uni="3">Edinburgh</button>
-            <button class="vote-btn" data-uni="4">Tokyo</button>
-            <button class="vote-btn" data-uni="5">PUMC</button>
+            <button class="vote-btn" data-idx="0">Harvard</button>
+            <button class="vote-btn" data-idx="1">Oxford</button>
+            <button class="vote-btn" data-idx="2">ANU</button>
+            <button class="vote-btn" data-idx="3">Edinburgh</button>
+            <button class="vote-btn" data-idx="4">Tokyo</button>
+            <button class="vote-btn" data-idx="5">PUMC</button>
         </div>
-        <div class="chart-box">
-            <canvas id="voteChart"></canvas>
-        </div>
+        <div class="chart-box"><canvas id="voteChart"></canvas></div>
     </div>
 </div>
 
 <script>
-    const labels = ['Harvard', 'Oxford', 'ANU', 'Edinburgh', 'Tokyo', 'PUMC'];
-    let votes = [0, 0, 0, 0, 0, 0];
+const DATA_URL = "https://api.npoint.io/30a04e6a2559b4d86c45";
+const universities = ["Harvard", "Oxford", "ANU", "Edinburgh", "Tokyo", "PUMC"];
+let voteData = [0,0,0,0,0,0];
+let voted = localStorage.getItem("voted") === "true";
 
-    const ctx = document.getElementById('voteChart').getContext('2d');
-    const chart = new Chart(ctx, {
-        type: 'bar',
-        data: {
-            labels: labels,
-            datasets: [{
-                label: 'Votes',
-                data: votes,
-                backgroundColor: '#3182ce',
-                borderWidth: 1,
-                borderRadius: 4
-            }]
-        },
-        options: {
-            responsive: true,
-            maintainAspectRatio: false,
-            scales: {
-                y: { beginAtZero: true, ticks: { stepSize: 1 } },
-                x: { grid: { display: false } }
-            }
-        }
+// 圖表
+const ctx = document.getElementById('voteChart').getContext('2d');
+const chart = new Chart(ctx, {
+  type: 'bar',
+  data: {
+    labels: universities,
+    datasets: [{ data: voteData, backgroundColor: "#3182ce", label: "Total Votes" }]
+  },
+  options: {
+    responsive: true,
+    maintainAspectRatio: false,
+    scales: { y: { beginAtZero: true, stepSize: 1 } }
+  }
+});
+
+// 讀取最新票數
+async function loadVotes() {
+  try {
+    let res = await fetch(DATA_URL);
+    let data = await res.json();
+    voteData = data.votes || [0,0,0,0,0,0];
+    chart.data.datasets[0].data = voteData;
+    chart.update();
+  } catch(e) {}
+}
+
+// 投票
+document.querySelectorAll(".vote-btn").forEach((btn, i) => {
+  btn.disabled = voted;
+  btn.addEventListener("click", async () => {
+    if (voted) return alert("You already voted!");
+    voteData[btn.dataset.idx]++;
+    voted = true;
+    localStorage.setItem("voted", "true");
+    btn.disabled = true;
+
+    await fetch(DATA_URL, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ votes: voteData })
     });
 
-    document.querySelectorAll('.vote-btn').forEach(btn => {
-        btn.addEventListener('click', function(){
-            const i = parseInt(this.dataset.uni);
-            votes[i]++;
-            chart.update();
-            alert('Thank you for voting!');
-        });
-    });
+    loadVotes();
+    alert("Thank you!");
+  });
+});
+
+// 自動刷新 (老師頁面會自動更新)
+setInterval(loadVotes, 5000);
+loadVotes();
 </script>
 </body>
 </html>
